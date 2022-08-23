@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Bike Station</string>
+    <string name="title_activity_bike_detail">BikeDetailActivity</string>
 </resources>

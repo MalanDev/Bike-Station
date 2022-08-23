@@ -18,7 +18,12 @@ class HomeViewModel @Inject constructor(
     private val _bikeStationState = MutableLiveData(BikeStationState())
     val bikeStationState: LiveData<BikeStationState> = _bikeStationState
 
-    fun getBikeStations() {
+
+    init {
+        getBikeStations()
+    }
+
+    private fun getBikeStations() {
         getBikeStationsUseCase().onEach { result ->
             when (result) {
                 is Resource.Success -> {
