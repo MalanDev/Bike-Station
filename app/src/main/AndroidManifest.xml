@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="lk.crud.bikestation">
 
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".BikeStationApp"
         android:allowBackup="true"
@@ -25,7 +28,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".presentation.ui.main.HomeActivity"
             android:exported="true">
 
         </activity>

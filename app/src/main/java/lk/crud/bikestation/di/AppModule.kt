@@ -7,7 +7,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import lk.crud.bikestation.common.Constants
 import lk.crud.bikestation.data.remote.BikeStationApi
-import lk.crud.bikestation.data.remote.mapper.BikeStationMapper
+import lk.crud.bikestation.data.remote.mapper.*
 import lk.crud.bikestation.data.repository.BikeRepositoryImpl
 import lk.crud.bikestation.domain.repository.BikeRepository
 import okhttp3.*
@@ -23,7 +23,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun providerNewsApi():BikeStationApi{
+    fun provideBikeStationApi():BikeStationApi{
 
         class LogJsonInterceptor : Interceptor {
             @Throws(IOException::class)
@@ -69,5 +69,40 @@ object AppModule {
         return BikeRepositoryImpl(api,bikeStationMapper)
     }
 
+    @Provides
+    @Singleton
+    fun provideBikeStationMapper(crsMapper: CrsMapper,featureMapper: FeatureMapper):BikeStationMapper{
+        return BikeStationMapper(crsMapper, featureMapper)
+    }
+
+    @Provides
+    @Singleton
+    fun provideCrsMapper(crsPropertyMapper: CrsPropertyMapper):CrsMapper{
+        return CrsMapper(crsPropertyMapper)
+    }
+
+    @Provides
+    @Singleton
+    fun provideCrsPropertyMapper():CrsPropertyMapper{
+        return CrsPropertyMapper()
+    }
+
+    @Provides
+    @Singleton
+    fun provideFeatureMapper(geometryMapper: GeometryMapper,propertiesMapper: PropertiesMapper):FeatureMapper{
+        return FeatureMapper(geometryMapper,propertiesMapper)
+    }
+
+    @Provides
+    @Singleton
+    fun provideGeometryMapper(): GeometryMapper {
+        return GeometryMapper()
+    }
+
+    @Provides
+    @Singleton
+    fun providePropertiesMapper():PropertiesMapper{
+        return PropertiesMapper()
+    }
 
 }

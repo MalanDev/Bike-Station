@@ -6,6 +6,6 @@ import retrofit2.http.Query
 
 interface BikeStationApi {
 
-    @GET("/v2/everything")
-    suspend fun getBikeStation(): BikeStationEntity
+    @GET("mim/plan/map_service.html")
+    suspend fun getBikeStation(@Query("mType")mType:String,@Query("co")co:String): BikeStationEntity
 }
