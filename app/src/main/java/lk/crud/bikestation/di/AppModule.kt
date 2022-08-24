@@ -45,9 +45,9 @@ object AppModule {
 
         val client = OkHttpClient.Builder()
 
-        client.connectTimeout(30, TimeUnit.SECONDS)
-        client.writeTimeout(30, TimeUnit.SECONDS)
-        client.readTimeout(30, TimeUnit.SECONDS)
+        client.connectTimeout(40, TimeUnit.SECONDS)
+        client.writeTimeout(40, TimeUnit.SECONDS)
+        client.readTimeout(40, TimeUnit.SECONDS)
         client.interceptors().add(LogJsonInterceptor())
 
         client.addInterceptor { chain ->

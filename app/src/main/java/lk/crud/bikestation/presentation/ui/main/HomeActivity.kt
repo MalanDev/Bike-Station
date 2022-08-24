@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
@@ -20,7 +21,6 @@ import lk.crud.bikestation.BikeStationApp
 import lk.crud.bikestation.common.Constants
 import lk.crud.bikestation.databinding.ActivityHomeBinding
 import lk.crud.bikestation.presentation.ui.detail.BikeDetailActivity
-import pub.devrel.easypermissions.AppSettingsDialog
 
 
 @AndroidEntryPoint
@@ -61,7 +61,7 @@ class HomeActivity : AppCompatActivity() {
                 }
                 else -> {
                     // No location access granted.
-                    AppSettingsDialog.Builder(this).build().show()
+
                 }
             }
         }
@@ -97,8 +97,10 @@ class HomeActivity : AppCompatActivity() {
     @SuppressLint("MissingPermission")
     private fun getLocation() {
         fusedLocationClient.lastLocation.addOnSuccessListener { location ->
-            BikeStationApp.currentLat = location.latitude
-            BikeStationApp.currentLng = location.longitude
+            if (location != null) {
+                BikeStationApp.currentLat = location.latitude
+                BikeStationApp.currentLng = location.longitude
+            }
         }
 
     }
@@ -117,6 +119,10 @@ class HomeActivity : AppCompatActivity() {
             if (bikeStationState.isLoading) View.VISIBLE else View.GONE
 
         bikeStationAdapter.submitList(bikeStationState.bikeStation.features)
+
+        if (bikeStationState.error.isNotEmpty()) {
+            Toast.makeText(this, bikeStationState.error, Toast.LENGTH_LONG)
+        }
 
     }
 }
