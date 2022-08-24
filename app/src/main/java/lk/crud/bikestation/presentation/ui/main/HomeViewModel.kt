@@ -1,7 +1,9 @@
 package lk.crud.bikestation.presentation.ui.main
 
-import androidx.compose.runtime.State
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -11,19 +13,14 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val savedStateHandle: SavedStateHandle,
     private val getBikeStationsUseCase: GetBikeStationsUseCase
-):ViewModel() {
+) : ViewModel() {
 
     private val _bikeStationState = MutableLiveData(BikeStationState())
     val bikeStationState: LiveData<BikeStationState> = _bikeStationState
 
 
-    init {
-        getBikeStations()
-    }
-
-    private fun getBikeStations() {
+     fun getBikeStations() {
         getBikeStationsUseCase().onEach { result ->
             when (result) {
                 is Resource.Success -> {
