@@ -1,16 +1,23 @@
 package lk.crud.bikestation.presentation.ui.splash
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import lk.crud.bikestation.MainActivity
-import lk.crud.bikestation.R
+import androidx.appcompat.app.AppCompatActivity
+import lk.crud.bikestation.databinding.ActivitySplashBinding
+import lk.crud.bikestation.presentation.ui.main.HomeActivity
 
 class SplashActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivitySplashBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
 
-        startActivity(Intent(this,MainActivity::class.java))
+        binding = ActivitySplashBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        startActivity(Intent(this, HomeActivity::class.java))
+
     }
+
+
 }

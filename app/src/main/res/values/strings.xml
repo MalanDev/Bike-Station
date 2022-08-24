@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Bike Station</string>
+    <string name="title_activity_bike_detail">BikeDetailActivity</string>
+    <string name="available_bikes">Available Bikes</string>
+    <string name="available_places">Available Places</string>
+    <string name="bike_station">%dm - Bike Station</string>
 </resources>

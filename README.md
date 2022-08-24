@@ -21,6 +21,7 @@ Bumblebee | 2021.1.1	3.2-7.1
 Chipmunk | 2021.2.1	3.2-7.2)
 
 * Open Android Studio and select `File->Open...` or from the Android Launcher select `Import project (Eclipse ADT, Gradle, etc.)` and navigate to the root directory of your project.
+* Open local.properties and add your MAPS_API_KEY = Aiz.....
 * Select the directory or drill in and select the file `build.gradle` in the cloned repo.
 * Click 'OK' to open the the project in Android Studio.
 * A Gradle sync should start, but you can force a sync and build the 'app' module as needed.

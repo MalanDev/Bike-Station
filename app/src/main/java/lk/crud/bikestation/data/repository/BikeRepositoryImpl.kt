@@ -7,12 +7,14 @@ import lk.crud.bikestation.domain.model.Feature
 import lk.crud.bikestation.domain.repository.BikeRepository
 import javax.inject.Inject
 
-class BikeRepositoryImpl @Inject constructor(private val api: BikeStationApi,private val bikeStationMapper: BikeStationMapper) :BikeRepository{
-    //    override suspend fun getBikeStation(): BikeStation {
-//        return api.getBikeStation().let { bikeStationMapper.invoke(it) }
-//    }
+class BikeRepositoryImpl @Inject constructor(
+    private val api: BikeStationApi,
+    private val bikeStationMapper: BikeStationMapper
+) : BikeRepository {
+
     override suspend fun getBikeStation(): BikeStation {
-        TODO("Not yet implemented")
+        return api.getBikeStation("pub_transport", "stacje_rowerowe")
+            .let { bikeStationMapper.invoke(it) }
     }
 
 

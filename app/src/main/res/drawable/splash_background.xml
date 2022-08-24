@@ -7,7 +7,7 @@
         android:bottom="0dp"
         android:drawable="@color/orange"/>
 
-    <item android:drawable="@drawable/ic_baseline_directions_bike_24"
+    <item android:drawable="@drawable/ic_bike"
         android:gravity="center"
         android:height="96dp"
         android:width="96dp"/>
