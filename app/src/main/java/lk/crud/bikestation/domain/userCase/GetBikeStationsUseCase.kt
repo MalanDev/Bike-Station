@@ -21,7 +21,8 @@ class GetBikeStationsUseCase @Inject constructor(
         }catch (ex: HttpException){
             emit(Resource.Error(ex.localizedMessage?:"An unexpected error occured!"))
         }catch (ex:IOException){
-            emit(Resource.Error("Couldn't reach server. Check your internet connect"))
+
+            emit(Resource.Error(ex.localizedMessage?:"Couldn't reach server. Check your internet connect"))
         }
     }
 }
